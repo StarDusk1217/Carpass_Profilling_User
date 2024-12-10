@@ -1,0 +1,300 @@
+﻿@page "/"
+@using Microsoft.AspNetCore.Components.Rendering
+@using System.Globalization
+
+@inject IApplicantService ApplicantService
+@inject ICentralDataService CentralDataService
+@inject IPendingService PendingService
+@rendermode InteractiveServer
+
+<PageTitle>Home</PageTitle>
+
+<WelcomeModal />
+
+<div class="main-container">
+    <div class="scrollable-container">
+        <div class="dashboard-container">
+            <div class="stat-card-wrapper">
+                <a href="/edit-applicant" class="stat-card">
+                    <div class="stat-content">
+                        <span class="bi bi-person-plus icon"></span>
+                        <div>
+                            <h4>REGISTER NOW:</h4>
+                        </div>
+                    </div>
+                    <span class="bi bi-people background-icon"></span>
+                </a>
+                <div class="arrow-container">
+                    <div class="arrow-content">
+                        <div class="arrow">&#x279C;</div> <!-- Longer arrow character -->
+                        <div class="arrow-text">Register Now</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="procedures-wrapper">
+        <div class="procedures-container">
+            <div class="header">
+                <h2>Procedure for Obtaining a Vehicle Car Pass</h2>
+                <h3>CRR-SYSTEM at Central Philippine University</h3>
+            </div>
+
+            <div class="section">
+                <h4>Step 1: Registration</h4>
+                <div class="subsection">
+                    <h5>Online Registration</h5>
+                    <ol>
+                        <li>Access the CRR-SYSTEM portal from any electronic device.</li>
+                        <li>Complete the online registration form by entering all the required information, including personal details, vehicle details, and contact information.</li>
+                        <li>Submit the form.</li>
+                    </ol>
+                </div>
+                <div class="subsection">
+                    <h5>On-site Registration</h5>
+                    <ol>
+                        <li>Visit the registration kiosk located within the university campus.</li>
+                        <li>Use the kiosk to fill out the necessary registration form with personal and vehicle details.</li>
+                        <li>Submit the form at the kiosk.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="section">
+                <h4>Step 2: Submission of Required Documents</h4>
+                <p>After submitting the registration form, a pop-up message or notification will appear on the screen, guiding the applicant through the next steps. The following documents must be submitted in person as per the instructions provided:</p>
+                <ul>
+                    <li>Photocopy of Vehicle's LTO Official Receipt (OR).</li>
+                    <li>Photocopy of Vehicle's LTO Certificate of Registration (CR).</li>
+                    <li>Photocopy of Driver's License.</li>
+                    <li>Photocopy of Affidavit of Undertaking or Proof of Ownership of Vehicle. (for a vehicle not owned by the applicant or one with transfer of ownership to applicant still in process)</li>
+                    <li>Photocopy of Student's Current Registration Form (RF). (for CPU students and Parents/Guardians of CPU students Only)</li>
+                    <li>Photocopy of Student's Identification Card</li>
+                    <li>Photo of Endorsement from Mr. Ernie Solatorio. (for CPU Tenants only)</li>
+                </ul>
+                <p class="note">Note: All documents must be clear and legible.</p>
+            </div>
+            <div class="section">
+                <h4>Step 3: Payment Process</h4>
+                <p>The applicant must proceed with the payment for the type of car pass they wish to avail. Payments are made inside the campus at designated payment centers. The types of car passes available will be listed, and the applicant can choose the one that best suits their needs.</p>
+            </div>
+            <div class="section">
+                <h4>Step 4: Verification and Issuance of Car Pass</h4>
+                <ol>
+                    <li>The applicant must present the payment receipt to the campus security staff.</li>
+                    <li>The security staff will verify the payment and documentation.</li>
+                    <li>Upon verification, the appropriate car pass sticker will be applied to the applicant's vehicle.</li>
+                </ol>
+            </div>
+            <div class="section">
+                <h4>Completion</h4>
+                <p>Once the car pass sticker is applied to the applicant's vehicle, they are officially a car pass holder. This car pass will allow regulated access to the university's parking facilities, ensuring a smooth and organized parking experience on campus.</p>
+                <p>For further assistance or any inquiries regarding the CRR-SYSTEM, the applicant should contact the university administration or visit the help desk at the registration kiosk.</p>
+            </div>
+
+            <hr class="document-line">
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 Central Philippine University. All rights reserved.</p>
+    </div>
+</div>
+
+<style>
+    .scrollable-container {
+        max-width: 1200px;
+        padding-top: 0px;
+        box-sizing: border-box;
+        margin-bottom: 20px; /* Add some space between the containers */
+    }
+
+    .dashboard-container {
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 0;
+        background: linear-gradient(135deg, #203354 0%, #4169e1 100%);
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .stat-card-wrapper {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .stat-card {
+        max-width: 300px; /* Decreased max-width */
+        background-color: #4169e1;
+        color: #ffffff;
+        padding: 30px;
+        border-bottom: 5px solid yellow;
+        border-radius: 15px;
+        box-shadow: 0 5px 10px rgba(255, 255, 255, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: calc(33.33% - 20px);
+        height: 200px;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s;
+        z-index: 2;
+        margin-right: 20px;
+        text-decoration: none;
+    }
+
+        .stat-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(255, 255, 255, 0.4);
+        }
+
+        .stat-card .icon {
+            font-size: 50px;
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .stat-card .background-icon {
+            font-size: 180px;
+            color: rgba(255, 255, 255, 0.05);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        .stat-card h4 {
+            margin: 0;
+            font-size: 1.5em;
+            text-align: left;
+            z-index: 3;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+    .arrow-container {
+        display: flex;
+        align-items: center;
+        padding-right: 20px;
+    }
+
+    .arrow-content {
+        display: flex;
+        align-items: center;
+        font-size: 2em;
+        color: #ffffff;
+    }
+
+    .arrow {
+        margin-right: 10px;
+        font-size: 3em;
+        transform: scaleX(-1);
+    }
+
+    .arrow-text {
+        font-size: 1.5em;
+        color: yellow;
+        margin-left: 10px; /* Adjusted margin */
+    }
+
+    .procedures-wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .procedures-container {
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 30px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .header {
+        text-align: center;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #4169e1;
+        padding-bottom: 20px;
+        background-color: lightblue;
+        margin: -30px -30px 30px -30px;
+        padding: 30px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+
+        .header h2 {
+            color: #4169e1;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .header h3 {
+            color: #333;
+            font-size: 18px;
+        }
+
+    .section {
+        margin-bottom: 30px;
+    }
+
+        .section h4 {
+            color: #4169e1;
+            font-size: 20px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+    .subsection h5 {
+        color: #333;
+        font-size: 18px;
+        margin-top: 15px;
+        margin-bottom: 10px;
+    }
+
+    .section p, .section li {
+        color: #333;
+        line-height: 1.6;
+        font-size: 16px;
+    }
+
+    .section ul, .section ol {
+        margin-bottom: 15px;
+        padding-left: 30px;
+    }
+
+    .note {
+        font-style: italic;
+        color: #666;
+    }
+
+    .footer {
+        text-align: center;
+        margin-top: 20px;
+        padding-top: 10px;
+        border: 1px solid #ddd;
+        border-bottom: 3px solid yellow;
+        font-size: 13px;
+        color: darkgrey;
+        background-color: #25337a;
+    }
+
+    .main-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+</style>
+
+
+

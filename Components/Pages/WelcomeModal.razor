@@ -1,0 +1,91 @@
+﻿@code {
+    private bool showModal = true;
+
+    private void CloseModal()
+    {
+        showModal = false;
+    }
+}
+
+@if (showModal)
+{
+    <div class="modal fade show" tabindex="-1" style="display: block;" aria-modal="true" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Welcome to CRR-SYSTEM</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <img src="Images/Logo.png" class="rounded mb-3 modal-image" alt="University Logo" />
+                        <p>Welcome to the CRR-SYSTEM at Central Philippine University!</p>
+                        <p>We are excited to have you here. Please follow the steps outlined on the homepage to complete your registration and obtain your vehicle car pass.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" @onclick="CloseModal">Get Started</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-backdrop fade show"></div>
+}
+
+
+<style>
+    .modal-image {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .modal-content {
+        background-color: #203354; /* Royal Blue */
+        color: #FFD700; /* Gold */
+        border-radius: 10px;
+        border: 2px solid #FFD700; /* Gold border */
+    }
+
+    .modal-header {
+        border-bottom: 2px solid #FFD700; /* Gold border */
+    }
+
+    .modal-title {
+        color: #FFD700; /* Gold */
+    }
+
+    .close {
+        color: #FFD700; /* Gold */
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
+
+    .modal-footer {
+        border-top: 2px solid #FFD700; /* Gold border */
+        display: flex;
+        justify-content: center;
+    }
+
+    .btn-primary {
+        background-color: #FFD700; /* Gold */
+        border-color: #FFD700; /* Gold */
+        color: #203354; /* Royal Blue */
+    }
+
+        .btn-primary:hover {
+            background-color: #e6b800; /* Darker Gold */
+            border-color: #e6b800; /* Darker Gold */
+        }
+
+    .modal-image {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
