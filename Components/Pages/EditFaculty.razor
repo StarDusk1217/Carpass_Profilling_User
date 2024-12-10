@@ -101,7 +101,7 @@
                                     <div class="row mb-3">
                                         <div class="col-md-6">
                                             <label for="veplate" class="form-label">Vehicle Plate Number *</label>
-                                            <InputText id="veplate" class="form-control form-control-lg" @bind-Value="CurrentApplicant.ve_PlateNO" placeholder="ex.(AGA 8726)" required maxlength="8" pattern="^[A-Z0-9]+$" title="Plate number must be alphanumeric"></InputText>
+                                            <InputText id="veplate" class="form-control form-control-lg" @bind-Value="CurrentApplicant.ve_PlateNO" placeholder="AGA8726" pattern="^[A-Z0-9]+$" title="Plate number must be alphanumeric"></InputText>
                                             <ValidationMessage For="@(() => CurrentApplicant.ve_PlateNO)" />
                                             <span class="text-danger">@VePlateNOValidationMessage</span>
                                         </div>
@@ -348,16 +348,16 @@
     private List<string> type_Applicant = new List<string>
     {
         "",
-        "Parents of CPU Student",
-        "Guardian of CPU Student",
-        "CPU Student",
-        "CPU Tenant",
+        "1st Vehicle",
+        "2nd Vehicle",
+        "3rd Vehicle",
         "Other"
     };
 
     private List<string> type_Carpass = new List<string>
     {
         "",
+        "No Payment (For 1stt Vehicle)",
         "Php 5,000.00 Paid Parking (4 - Wheeled)",
         "Php 2,500.00 Non-Paid Parking (4 - Wheeled)",
         "Php 1,500.00 Non-Paid Parking (2 - Wheeled)"
